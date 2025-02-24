@@ -6,7 +6,7 @@
 
 import { definePluginSettings } from "@api/Settings";
 import { Devs } from "@utils/constants";
-import { ModalHeader,ModalProps, ModalRoot } from "@utils/modal";
+import { ModalHeader, ModalProps, ModalRoot } from "@utils/modal";
 import definePlugin, { OptionType } from "@utils/types";
 
 export function confirmationModal({ rootProps }: { rootProps: ModalProps; }) {
@@ -42,7 +42,16 @@ const settings = definePluginSettings({
 export default definePlugin({
   name: "Confirm Alert",
   description:
-    "Prevent accidental quits (CTRL + Q) or restarts (CTRL + R) by showing a confirmation dialog",
+    "Prevent accidental quits (CTRL + Q) and restarts (CTRL + R) by showing a confirmation dialog",
   authors: [Devs.mura],
   settings,
+  patches: [
+    {
+      find: ".quit,",
+      replacement: {
+          match: /(?<="quit",(\i)=>{)/,
+          replace: (_, event) => `$self.reveal(${event});`
+      }
+    }
+  ]
 });
