@@ -52,6 +52,13 @@ export default definePlugin({
           match: /S.window.close/,
           replace: "console.log('success!')",
       }
+    },
+    {
+      find: "location.reload",
+      replacement: {
+          match: /location.reload/,
+          replace: "console.log('success RESTARTING!')",
+      }
     }
   ]
 });
