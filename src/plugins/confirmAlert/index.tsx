@@ -6,7 +6,8 @@
 
 import { definePluginSettings } from "@api/Settings";
 import { Devs } from "@utils/constants";
-import { ModalHeader, ModalProps, ModalRoot } from "@utils/modal";
+// eslint-disable-next-line unused-imports/no-unused-imports
+import { ModalFooter, ModalHeader, ModalProps, ModalRoot } from "@utils/modal";
 import definePlugin, { OptionType } from "@utils/types";
 
 export function confirmationModal({ rootProps }: { rootProps: ModalProps; }) {
@@ -14,8 +15,12 @@ export function confirmationModal({ rootProps }: { rootProps: ModalProps; }) {
     <ModalRoot {...rootProps}>
 
       <ModalHeader>
-        <p>we do a lilttle testingg</p>
+        we do a lilttle testingg
       </ModalHeader>
+
+      <ModalFooter>
+        hiiii
+      </ModalFooter>
 
     </ModalRoot>
   );
@@ -25,7 +30,7 @@ export function confirmationModal({ rootProps }: { rootProps: ModalProps; }) {
 const settings = definePluginSettings({
   behavior: {
     type: OptionType.SELECT,
-    description: "Which actions to confirm",
+    description: "Which actions to require confirmation",
     options: [
       { label: "Quit + Restart", value: "both", default: true },
       { label: "Quit", value: "quit" },
@@ -50,15 +55,15 @@ export default definePlugin({
       find: "S.window.close",
       replacement: {
           match: /S.window.close/,
-          replace: "console.log('success!')",
+          replace: "import { ModalFooter, ModalHeader, ModalProps, ModalRoot } from '@utils/modal'; openModal(confirmationModal);",
       }
     },
-    {
-      find: "location.reload",
-      replacement: {
-          match: /location.reload/,
-          replace: "console.log('success RESTARTING!')",
-      }
-    }
+    // {
+    //   find: "location.reload",
+    //   replacement: {
+    //       match: /location.reload/,
+    //       replace: "console.log('success RESTARTING!')",
+    //   }
+    // }
   ]
 });
