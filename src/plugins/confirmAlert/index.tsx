@@ -47,10 +47,10 @@ export default definePlugin({
   settings,
   patches: [
     {
-      find: ".quit,",
+      find: "S.window.close",
       replacement: {
-          match: /(?<="quit",(\i)=>{)/,
-          replace: (_, event) => `$self.reveal(${event});`
+          match: /S.window.close/,
+          replace: "console.log('success!')",
       }
     }
   ]
