@@ -1,22 +1,21 @@
-import { Devs } from "@utils/constants";
+/*
+ * Vencord, a Discord client mod
+ * Copyright (c) 2025 Vendicated and contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 import { definePluginSettings } from "@api/Settings";
+import { Devs } from "@utils/constants";
+import { ModalHeader,ModalProps, ModalRoot } from "@utils/modal";
 import definePlugin, { OptionType } from "@utils/types";
-import { ModalRoot, ModalProps, ModalHeader, ModalFooter } from "@utils/modal";
-
-
 
 export function confirmationModal({ rootProps }: { rootProps: ModalProps; }) {
   return (
     <ModalRoot {...rootProps}>
 
       <ModalHeader>
-
+        <p>we do a lilttle testingg</p>
       </ModalHeader>
-
-      <ModalFooter>
-        <p>Are you sure you want to {settings.store.behavior}?</p>
-        <p>Are you sure you want to {settings.store.defaultOption ? "YES" : "NO"}?</p>
-      </ModalFooter>
 
     </ModalRoot>
   );
