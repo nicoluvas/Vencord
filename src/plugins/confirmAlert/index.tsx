@@ -45,7 +45,7 @@ const settings = definePluginSettings({
 });
 
 export default definePlugin({
-  name: "Confirm Alert",
+  name: "ConfirmAlert",
   description:
     "Prevent accidental quits (CTRL + Q) and restarts (CTRL + R) by showing a confirmation dialog",
   authors: [Devs.mura],
